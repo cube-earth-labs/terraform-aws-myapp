@@ -24,7 +24,7 @@ data "hcp_packer_iteration" "myapp" {
 data "hcp_packer_image" "myapp" {
   bucket_name    = data.hcp_packer_iteration.myapp.bucket_name
   cloud_provider = "aws"
-  iteration_id   = data.hcp_packer_iteration.myapp.ulid
+  iteration_id   = var.iteration_id == null ? data.hcp_packer_iteration.myapp.ulid : var.iteration_id
   region         = var.region
 }
 

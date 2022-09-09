@@ -21,7 +21,7 @@ variable "region" {
 
 variable "iteration_id" {
   description = "HCP Packer Iteration ID"
-  default = "null"
+  default = null
 }
 
 variable "address_space" {
