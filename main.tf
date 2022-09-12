@@ -29,7 +29,8 @@ data "hcp_packer_image" "myapp" {
 }
 
 resource "aws_instance" "myapp" {
-  ami                         = data.hcp_packer_image.myapp.cloud_image_id
+  #ami                         = data.hcp_packer_image.myapp.cloud_image_id
+  ami                         = "ami-0568773882d492fc8"
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.myapp.key_name
   associate_public_ip_address = true
