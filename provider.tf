@@ -16,6 +16,7 @@ terraform {
       source = "hashicorp/hcp"
       version = ">= 0.50.0"
     }
+  }
 }
 
 provider "hcp" {}
