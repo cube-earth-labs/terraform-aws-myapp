@@ -21,7 +21,6 @@ module "s3_bucket" {
   version = "3.6.0"
   bucket = "troyf-myapp-bucket"
   acl    = "private"
-  s3_bucket_region = var.region
 }
 
 data "hcp_packer_iteration" "myapp" {
