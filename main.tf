@@ -16,6 +16,13 @@
 # }
 # */
 
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.6.0"
+  bucket = "myapp-bucket"
+  acl    = "private"
+}
+
 data "hcp_packer_iteration" "myapp" {
   bucket_name = "hcp-packer-myapp"
   channel     = var.environment
