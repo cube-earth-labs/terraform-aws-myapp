@@ -19,7 +19,7 @@
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.6.0"
-  bucket = "myapp-bucket"
+  bucket = "troyf-myapp-bucket"
   acl    = "private"
   s3_bucket_region = var.region
 }
