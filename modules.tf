@@ -1,10 +1,3 @@
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.6.0"
-  bucket = "troyf-myapp-bucket"
-  acl    = "private"
-}
-
 module "security-group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.16.2"
