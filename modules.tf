@@ -1,6 +1,6 @@
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.5.0"
+  version = "3.6.0"
   bucket = "troyf-myapp-bucket"
   acl    = "private"
 }
