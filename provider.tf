@@ -29,7 +29,7 @@ provider "aws" {
      environment = var.environment
      application = "MyApp"
      owner       = "Troy"
-     costcenter  = "9876"
+     costcenter  = "12345"
    }
  }
 }
