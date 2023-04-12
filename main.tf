@@ -1,19 +1,19 @@
 # /* Non HCP Packer AMI lookup
-# data "aws_ami" "ubuntu" {
-#   most_recent = true
+data "aws_ami" "ubuntu" {
+  most_recent = true
 
-#   filter {
-#     name = "name"
-#     values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
-#   }
+  filter {
+    name = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+  }
 
-#   filter {
-#     name   = "virtualization-type"
-#     values = ["hvm"]
-#   }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 
-#   owners = ["099720109477"] # Canonical
-# }
+  owners = ["099720109477"] # Canonical
+}
 # */
 
 # data "hcp_packer_iteration" "myapp" {
@@ -30,7 +30,8 @@
 
 resource "aws_instance" "myapp" {
   #ami                         = data.hcp_packer_image.myapp.cloud_image_id
-  ami                         = "ami-0568773882d492fc8"
+  ami                         = data.aws_ami.ubuntu.id
+  #ami                         = "ami-0568773882d492fc8"
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.myapp.key_name
   associate_public_ip_address = true
