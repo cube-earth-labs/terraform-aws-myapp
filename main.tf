@@ -48,8 +48,7 @@ resource "aws_instance" "myapp" {
   lifecycle {
     postcondition {
       condition     = self.ami == data.hcp_packer_image.myapp.cloud_image_id
-      error_message = "Must use the latest available AMI,
-        ${data.hcp_packer_image.myapp.cloud_image_id}."
+      error_message = "Must use the latest available AMI, ${data.hcp_packer_image.myapp.cloud_image_id}."
     }
   }
 }
