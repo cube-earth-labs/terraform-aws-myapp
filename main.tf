@@ -29,7 +29,7 @@ data "hcp_packer_image" "myapp" {
 }
 
 resource "aws_instance" "myapp" {
-  ami                         = data.hcp_packer_image.myapp.cloud_image_id   # Retrieving from HCP Packer registry
+  ami = data.hcp_packer_image.myapp.cloud_image_id # Retrieving from HCP Packer registry
   #ami                         = data.aws_ami.ubuntu.id   # Retrieving AMI ID from AWS data filter
   #ami                         = "ami-0568773882d492fc8"  # Direct AMI ID assignment
   instance_type               = var.instance_type
@@ -37,18 +37,19 @@ resource "aws_instance" "myapp" {
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.myapp.id
   vpc_security_group_ids      = [aws_security_group.myapp.id]
-  user_data = file("${path.module}/scripts/userdata-server.sh")
+  user_data                   = file("${path.module}/scripts/userdata-server.sh")
   tags = {
-    Name = "${var.prefix}-myapp-instance"
-    HCP-Image-Channel = data.hcp_packer_image.myapp.channel
-    HCP-Iteration-ID = data.hcp_packer_iteration.myapp.ulid
-    HCP-Image-Version = data.hcp_packer_iteration.myapp.incremental_version
+    Name               = "${var.prefix}-myapp-instance"
+    HCP-Image-Channel  = data.hcp_packer_image.myapp.channel
+    HCP-Iteration-ID   = data.hcp_packer_iteration.myapp.ulid
+    HCP-Image-Version  = data.hcp_packer_iteration.myapp.incremental_version
     HCP-Image-Creation = data.hcp_packer_iteration.myapp.created_at
-    }
+  }
 
   lifecycle {
     postcondition {
       condition     = self.ami == data.hcp_packer_image.myapp.cloud_image_id
       error_message = "Must use the latest available AMI, ${data.hcp_packer_image.myapp.cloud_image_id}."
+    }
   }
 }
