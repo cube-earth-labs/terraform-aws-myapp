@@ -11,7 +11,7 @@ variable "prefix" {
 
 variable "environment" {
   description = "What environment you will be deploying to."
-  default = "production"
+  default     = "production"
 }
 
 variable "region" {
@@ -21,7 +21,7 @@ variable "region" {
 
 variable "iteration_id" {
   description = "HCP Packer Iteration ID"
-  default = null
+  default     = null
 }
 
 variable "address_space" {
