@@ -29,9 +29,9 @@ data "hcp_packer_image" "myapp" {
 }
 
 resource "aws_instance" "myapp" {
-  #ami = data.hcp_packer_image.myapp.cloud_image_id # Retrieving from HCP Packer registry
+  ami = data.hcp_packer_image.myapp.cloud_image_id # Retrieving from HCP Packer registry
   #ami                         = data.aws_ami.ubuntu.id   # Retrieving AMI ID from AWS data filter
-  ami                         = "ami-09295ca9d73f1c048"  # Direct AMI ID assignment
+  #ami                         = "ami-09295ca9d73f1c048"  # Direct AMI ID assignment
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.myapp.key_name
   associate_public_ip_address = true
@@ -46,10 +46,10 @@ resource "aws_instance" "myapp" {
     HCP-Image-Creation = data.hcp_packer_iteration.myapp.created_at
   }
 
-#  lifecycle {
-#    postcondition {
-#      condition     = self.ami == data.hcp_packer_image.myapp.cloud_image_id
-#      error_message = "Please redeploy to update to image ID: ${data.hcp_packer_image.myapp.cloud_image_id}."
-#    }
-#  }
+  lifecycle {
+    postcondition {
+      condition     = self.ami == data.hcp_packer_image.myapp.cloud_image_id
+      error_message = "Please redeploy to update to image ID: ${data.hcp_packer_image.myapp.cloud_image_id}."
+    }
+  }
 }
