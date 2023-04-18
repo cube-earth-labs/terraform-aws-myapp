@@ -31,7 +31,7 @@ data "hcp_packer_image" "myapp" {
 resource "aws_instance" "myapp" {
   #ami = data.hcp_packer_image.myapp.cloud_image_id # Retrieving from HCP Packer registry
   #ami                         = data.aws_ami.ubuntu.id   # Retrieving AMI ID from AWS data filter
-  ami                         = "ami-0568773882d492fc8"  # Direct AMI ID assignment
+  ami                         = "ami-09295ca9d73f1c048"  # Direct AMI ID assignment
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.myapp.key_name
   associate_public_ip_address = true
