@@ -19,9 +19,6 @@ terraform {
   }
 }
 
-provider "hcp" {}
-provider "tls" {}
-provider "random" {}
 provider "aws" {
   region = var.region
   default_tags {
@@ -33,3 +30,7 @@ provider "aws" {
     }
   }
 }
+
+provider "hcp" {}
+provider "tls" {}
+provider "random" {}
