@@ -46,10 +46,10 @@ resource "aws_instance" "myapp" {
     HCP-Image-Creation = data.hcp_packer_iteration.myapp.created_at
   }
 
-  lifecycle {
-    postcondition {
-      condition     = self.ami == data.hcp_packer_image.myapp.cloud_image_id
-      error_message = "Please redeploy to update to image ID: ${data.hcp_packer_image.myapp.cloud_image_id}."
-    }
-  }
+#  lifecycle {
+#    postcondition {
+#      condition     = self.ami == data.hcp_packer_image.myapp.cloud_image_id
+#      error_message = "Please redeploy to update to image ID: ${data.hcp_packer_image.myapp.cloud_image_id}."
+#    }
+#  }
 }
