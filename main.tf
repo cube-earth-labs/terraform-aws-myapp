@@ -39,7 +39,7 @@ resource "aws_instance" "myapp" {
   vpc_security_group_ids      = [aws_security_group.myapp.id]
   user_data                   = file("${path.module}/scripts/userdata-server.sh")
   tags = {
-    Name               = "${var.prefix}-myapp-instance"
+    Name               = "${var.prefix}-myapp-${var.environment}"
     HCP-Image-Channel  = data.hcp_packer_image.myapp.channel
     HCP-Iteration-ID   = data.hcp_packer_iteration.myapp.ulid
     HCP-Image-Version  = data.hcp_packer_iteration.myapp.incremental_version
