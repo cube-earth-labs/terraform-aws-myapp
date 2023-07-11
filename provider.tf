@@ -25,7 +25,7 @@ provider "aws" {
     tags = {
       environment = var.environment
       application = "MyApp"
-      owner       = "Troy"
+      owner       = "Eric"
       costcenter  = "123"
     }
   }

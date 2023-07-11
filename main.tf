@@ -17,7 +17,7 @@
 #
 
 data "hcp_packer_iteration" "myapp" {
-  bucket_name = "hcp-packer-myapp"
+  bucket_name = "cube-ubuntu-myapp"
   channel     = var.environment
 }
 
