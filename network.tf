@@ -64,6 +64,12 @@ resource "aws_route_table" "myapp" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.myapp.id
   }
+  tags = {
+    environment = var.environment
+    application = "MyApp"
+    owner       = "Eric"
+    costcenter  = "123"
+  }
 }
 
 resource "aws_route_table_association" "myapp" {

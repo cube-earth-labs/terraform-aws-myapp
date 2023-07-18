@@ -14,6 +14,12 @@ locals {
 resource "aws_key_pair" "myapp" {
   key_name   = local.private_key_filename
   public_key = tls_private_key.myapp.public_key_openssh
+  tags = {
+    environment = var.environment
+    application = "MyApp"
+    owner       = "Eric"
+    costcenter  = "123"
+  }
 }
 
 # resource "null_resource" "myapp" {
