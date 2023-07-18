@@ -3,7 +3,7 @@ resource "aws_vpc" "myapp" {
   enable_dns_hostnames = true
 
   tags = {
-    name        = "${var.prefix}-vpc-${var.region}"
+    Name        = "${var.prefix}-vpc-${var.region}"
     environment = var.environment
   }
 }
@@ -13,12 +13,12 @@ resource "aws_subnet" "myapp" {
   cidr_block = var.subnet_prefix
 
   tags = {
-    name = "${var.prefix}-subnet"
+    Name = "${var.prefix}-subnet"
   }
 }
 
 resource "aws_security_group" "myapp" {
-  name = "${var.prefix}-security-group"
+  Name = "${var.prefix}-security-group"
 
   vpc_id = aws_vpc.myapp.id
 
