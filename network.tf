@@ -73,7 +73,7 @@ resource "aws_route_table_association" "myapp" {
 
 resource "aws_eip" "myapp" {
   instance = aws_instance.myapp.id
-  vpc      = true
+  domain   = "vpc"
 }
 
 resource "aws_eip_association" "myapp" {
