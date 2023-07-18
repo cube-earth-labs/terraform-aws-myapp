@@ -18,7 +18,7 @@ resource "aws_subnet" "myapp" {
 }
 
 resource "aws_security_group" "myapp" {
-  Name = "${var.prefix}-security-group"
+  name = "${var.prefix}-security-group"
 
   vpc_id = aws_vpc.myapp.id
 
