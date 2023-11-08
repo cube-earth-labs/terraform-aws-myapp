@@ -40,6 +40,7 @@ resource "aws_instance" "myapp" {
   user_data                   = file("${path.module}/scripts/userdata-server.sh")
   tags = {
     Name               = "${var.prefix}-myapp-${var.environment}"
+    Department         = "Development"
     HCP-Image-Channel  = data.hcp_packer_image.myapp.channel
     HCP-Iteration-ID   = data.hcp_packer_iteration.myapp.ulid
     HCP-Image-Version  = data.hcp_packer_iteration.myapp.incremental_version
